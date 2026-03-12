@@ -1,0 +1,16 @@
+build/
+dist/
+.vs/
+.vscode/
+*.user
+*.obj
+*.o
+*.dll
+*.so
+*.dylib
+*.exe
+*.pdb
+build/*.ll
+*.bc
+*.csv
+results/*.json

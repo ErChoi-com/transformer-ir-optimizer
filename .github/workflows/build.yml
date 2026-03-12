@@ -1,0 +1,37 @@
+name: build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install LLVM
+        uses: KyleMayes/install-llvm-action@v2
+        with:
+          version: "18"
+
+      - name: Configure
+        shell: pwsh
+        run: >
+          cmake -S . -B build
+          -DLLVM_DIR="${env:LLVM_PATH}/lib/cmake/llvm"
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Run benchmark binary
+        shell: pwsh
+        run: |
+          if (Test-Path ./build/Release/transformer_kernels.exe) {
+            ./build/Release/transformer_kernels.exe
+          } elseif (Test-Path ./build/transformer_kernels.exe) {
+            ./build/transformer_kernels.exe
+          } else {
+            throw "Benchmark binary not found after build."
+          }
