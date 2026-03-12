@@ -1,6 +1,6 @@
-# LLM Inference Optimization Pass
+# Transformer IR Optimizer
 
-`LLM Inference Optimization Pass` is a formal LLVM-based systems project focused on transformer inference kernels. It implements a new-pass-manager plugin that identifies recurring attention, matrix multiplication, and layer-normalization patterns in LLVM IR and annotates them for downstream optimization. The repository also includes a standalone benchmark harness for representative transformer hot spots.
+`Transformer IR Optimizer` is a formal LLVM-based systems project focused on transformer inference kernels. It implements a new-pass-manager plugin that identifies recurring attention, matrix multiplication, and layer-normalization patterns in LLVM IR and annotates them for downstream optimization. The repository also includes a standalone benchmark harness for representative transformer hot spots.
 
 ## Scope
 
