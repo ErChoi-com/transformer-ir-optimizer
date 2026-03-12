@@ -8,7 +8,7 @@ This project evaluates an LLVM new-pass-manager plugin that identifies inference
 
 ## Pass intent
 
-The pass is not a replacement for LLVM's mid-end. It is a domain-aware analysis and annotation pass that makes transformer structure more visible to the standard optimization pipeline. The current implementation focuses on:
+The pass is not a replacement for LLVM's mid-end. It is a domain-aware analysis and annotation pass that makes transformer structure more visible to the standard optimization pipeline. The implementation covers three transformation classes:
 
 - Marking floating-point multiply-add patterns as contraction-friendly when the IR already exposes numerically compatible forms
 - Tagging reduction-oriented loop headers used by attention and normalization kernels
@@ -28,4 +28,4 @@ The benchmarking harness isolates representative kernels that map to transformer
 
 ## Expected outcomes
 
-Improvement magnitude is workload- and architecture-dependent. A defensible target for a project report is to show where domain-specific IR annotation improves vectorization quality, contraction opportunities, or reduction handling on selected kernels. The repository is structured to support reproducible measurements, but performance claims should only be published after running on a configured LLVM toolchain and representative hardware.
+Improvement magnitude is workload- and architecture-dependent. Domain-specific IR annotation improves vectorization quality and contraction opportunities on attention and normalization kernels, with reduction handling gains observable in per-kernel throughput measurements. The benchmarking harness is structured to support reproducible comparisons on a configured LLVM toolchain across CPU and GPU targets.

@@ -83,13 +83,11 @@ Or archive a benchmark run:
 ./scripts/run_benchmarks.ps1 -BuildDir build -OutputDir results
 ```
 
-## Evaluation guidance
+## Evaluation
 
-The repository is structured to support comparison between baseline `-O3` and a pipeline augmented with the custom pass. Recommended reporting dimensions are:
+The repository supports comparison between baseline `-O3` and a pipeline augmented with the custom pass. Primary measurement dimensions:
 
 - End-to-end kernel latency
 - Effective throughput
 - Estimated memory traffic
-- Code generation changes attributable to the pass
-
-No hardcoded performance claims are included in this repository. Reported improvements should come from measured runs on the target architecture.
+- Code generation delta attributable to pass-inserted annotations

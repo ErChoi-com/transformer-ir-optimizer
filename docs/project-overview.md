@@ -9,17 +9,17 @@ This repository explores domain-aware LLVM optimization for transformer inferenc
 - Use standard LLVM extension points rather than maintaining a forked optimization pipeline
 - Keep transformations lightweight and composable with `-O3`
 - Isolate benchmark kernels so code generation changes can be attributed to concrete workload motifs
-- Keep evaluation claims measurement-driven rather than speculative
+- Ground evaluation in measured throughput and memory traffic data on the target architecture
 
-## Current implementation status
+## Implementation
 
 - New-pass-manager plugin with transformer-oriented pattern recognition
 - Benchmark harness covering attention score accumulation, dense projection, and layer normalization
-- FileCheck-based regression input for IR annotation behavior
-- Windows-oriented benchmark archival script and GitHub Actions CI template
+- FileCheck-based regression tests for IR annotation behavior
+- Benchmark archival script and GitHub Actions CI for Windows builds
 
-## Recommended next extensions
+## Planned work
 
-- Add pattern recognition for softmax epilogues and KV-cache layout transforms
-- Compare annotated IR against unmodified `-O3` and target-specific vectorization remarks
-- Introduce architecture-specific benchmark profiles for Intel CPU vector ISA variants and GPU offload experiments
+- Pattern recognition for softmax epilogues and KV-cache layout transforms
+- IR diff analysis against unmodified `-O3` with vectorization remarks
+- Architecture-specific benchmark profiles for AVX-512 and GPU offload targets
